@@ -24,7 +24,9 @@
   --muted:#64748b;
   --line:#dce4ed;
 }
-* {box-sizing:border-box}
+
+* { box-sizing:border-box; }
+
 body {
   margin:0;
   font-family:Inter,Arial,sans-serif;
@@ -32,37 +34,42 @@ body {
   color:var(--ink);
   line-height:1.55;
 }
+
+/* HEADER */
 header {
   background:var(--navy);
   color:white;
   padding:22px 20px;
   border-bottom:5px solid var(--orange);
 }
+
 .header-inner {
   max-width:1050px;
   margin:auto;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:20px;
+  justify-content:flex-start;
 }
+
 .brand {
-  font-size:19px;
+  color:#fff;
+  font-size:clamp(17px, 3.4vw, 27px);
   font-weight:900;
-  letter-spacing:.4px;
+  letter-spacing:.3px;
   line-height:1.2;
+  white-space:nowrap;
 }
-.brand span {color:var(--orange)}
-.header-tag {
-  font-size:12px;
-  color:#dce8f5;
-  text-align:right;
-  font-weight:600;
+
+.brand span {
+  color:var(--orange);
 }
+
+/* PAGE LAYOUT */
 main {
   width:min(920px, calc(100% - 28px));
   margin:36px auto 70px;
 }
+
 .panel {
   background:white;
   border:1px solid var(--line);
@@ -70,15 +77,23 @@ main {
   padding:clamp(20px,4vw,38px);
   box-shadow:0 12px 35px rgba(16,45,80,.07);
 }
-.hidden {display:none!important}
+
+.hidden { display:none!important; }
+
 h1 {
   color:var(--navy);
   font-size:clamp(27px,4vw,38px);
   line-height:1.15;
   margin:0 0 12px;
 }
-h2 {color:var(--navy);margin-top:0}
-p {color:#475569}
+
+h2 {
+  color:var(--navy);
+  margin-top:0;
+}
+
+p { color:#475569; }
+
 .eyebrow {
   color:var(--orange);
   font-size:12px;
@@ -87,13 +102,19 @@ p {color:#475569}
   text-transform:uppercase;
   margin-bottom:10px;
 }
-.intro {font-size:16px;max-width:680px}
+
+.intro {
+  font-size:16px;
+  max-width:680px;
+}
+
 .steps {
   display:flex;
   gap:8px;
   flex-wrap:wrap;
   margin:24px 0;
 }
+
 .step {
   border-radius:30px;
   padding:8px 13px;
@@ -102,7 +123,13 @@ p {color:#475569}
   font-size:12px;
   font-weight:800;
 }
-.step.active {background:#fff0e3;color:#a94d00}
+
+.step.active {
+  background:#fff0e3;
+  color:#a94d00;
+}
+
+/* FORM */
 label {
   display:block;
   color:var(--navy);
@@ -110,7 +137,8 @@ label {
   font-size:13px;
   margin:17px 0 7px;
 }
-input,textarea {
+
+input, textarea {
   width:100%;
   border:1px solid #cbd5e1;
   border-radius:9px;
@@ -120,16 +148,20 @@ input,textarea {
   color:var(--ink);
   background:white;
 }
-input:focus,textarea:focus {
+
+input:focus, textarea:focus {
   outline:3px solid rgba(23,105,170,.13);
   border-color:var(--blue);
 }
+
 .grid {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:0 18px;
 }
-button,.button {
+
+/* BUTTONS */
+button, .button {
   border:0;
   border-radius:9px;
   padding:14px 19px;
@@ -143,26 +175,68 @@ button,.button {
   gap:8px;
   transition:.15s ease;
 }
-button:hover,.button:hover {transform:translateY(-1px);filter:brightness(1.04)}
-.primary {background:var(--orange);color:#fff}
-.secondary {background:var(--navy);color:#fff}
-.outline {background:white;color:var(--navy);border:1px solid #cbd5e1}
-.button-row {display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-.button-row button {flex:1}
-.small-note {font-size:12px;color:var(--muted)}
-.signature-wrap {
+
+button:hover, .button:hover {
+  transform:translateY(-1px);
+  filter:brightness(1.04);
+}
+
+button:disabled {
+  opacity:.6;
+  cursor:not-allowed;
+  transform:none;
+}
+
+.primary {
+  background:var(--orange);
+  color:#fff;
+}
+
+.secondary {
+  background:var(--navy);
+  color:#fff;
+}
+
+.outline {
+  background:white;
+  color:var(--navy);
   border:1px solid #cbd5e1;
+}
+
+.button-row {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.button-row button { flex:1; }
+
+.small-note {
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* SIGNATURE PAD */
+.signature-wrap {
+  border:2px solid #cbd5e1;
   border-radius:12px;
   overflow:hidden;
   background:#fff;
+  width:100%;
 }
+
 #signatureCanvas {
   display:block;
   width:100%;
-  height:170px;
+  height:180px;
+  background:#fff;
   touch-action:none;
   cursor:crosshair;
+  user-select:none;
+  -webkit-user-select:none;
 }
+
 .signature-tools {
   border-top:1px solid var(--line);
   padding:9px 12px;
@@ -170,33 +244,62 @@ button:hover,.button:hover {transform:translateY(-1px);filter:brightness(1.04)}
   align-items:center;
   justify-content:space-between;
   gap:10px;
+  background:#f8fafc;
 }
+
 .signature-tools button {
   padding:7px 12px;
   font-size:12px;
 }
-.error {color:#b42318;font-size:13px;font-weight:700;margin-top:10px}
-.success {color:#167044;font-size:14px;font-weight:700}
+
+/* MESSAGES */
+.error {
+  color:#b42318;
+  font-size:13px;
+  font-weight:700;
+  margin-top:10px;
+}
+
+.success {
+  color:#167044;
+  font-size:14px;
+  font-weight:700;
+}
+
+/* PAYMENT */
 .payment-option {
   border:1px solid var(--line);
   border-radius:12px;
   padding:18px;
   margin:13px 0;
 }
-.payment-option h3 {margin:0 0 5px;color:var(--navy)}
-.payment-option p {margin:0 0 12px;font-size:14px}
+
+.payment-option h3 {
+  margin:0 0 5px;
+  color:var(--navy);
+}
+
+.payment-option p {
+  margin:0 0 12px;
+  font-size:14px;
+}
+
 .deposit-amount {
   font-size:38px;
   font-weight:900;
   color:var(--navy);
   margin:8px 0;
 }
+
+/* FOOTER */
 footer {
   text-align:center;
   color:#718096;
   font-size:12px;
   padding:0 20px 35px;
 }
+
+/* AGREEMENT PREVIEW */
 .agreement-preview {
   background:white;
   border:1px solid var(--line);
@@ -206,6 +309,7 @@ footer {
   max-height:650px;
   overflow:auto;
 }
+
 #agreementDocument {
   font-family:Arial,sans-serif;
   color:#111;
@@ -213,6 +317,7 @@ footer {
   line-height:1.38;
   background:white;
 }
+
 #agreementDocument h2 {
   color:#111;
   font-family:Arial,sans-serif;
@@ -220,13 +325,20 @@ footer {
   text-align:center;
   margin:0 0 20px;
 }
+
 #agreementDocument h3 {
   color:#111;
   font-family:Arial,sans-serif;
   font-size:11pt;
   margin:15px 0 4px;
+  page-break-after:avoid;
 }
-#agreementDocument p {color:#111;margin:7px 0}
+
+#agreementDocument p {
+  color:#111;
+  margin:7px 0;
+}
+
 #agreementDocument .field {
   display:inline-block;
   border-bottom:1px solid #111;
@@ -234,6 +346,7 @@ footer {
   padding:0 3px 2px;
   font-weight:600;
 }
+
 #agreementDocument .signature-image {
   max-width:230px;
   max-height:75px;
@@ -241,73 +354,124 @@ footer {
   display:block;
   margin:3px 0;
 }
+
 #agreementDocument table {
   width:100%;
   border-collapse:collapse;
   margin-top:8px;
   font-size:9.5pt;
 }
-#agreementDocument th,#agreementDocument td {
+
+#agreementDocument th,
+#agreementDocument td {
   border:1px solid #555;
   padding:5px;
   text-align:left;
 }
-#agreementDocument .signature-section {margin-top:25px}
-#agreementDocument .legal {white-space:normal}
-@media(max-width:620px) {
-  .grid {grid-template-columns:1fr}
-  .header-inner {align-items:flex-start}
-  .header-tag {max-width:120px}
-  .button-row {flex-direction:column}
-  .button-row button {width:100%}
-  .panel {padding:22px 18px}
+
+#agreementDocument .signature-section {
+  margin-top:25px;
 }
+
+#agreementDocument .legal {
+  white-space:normal;
+}
+
+@media(max-width:620px) {
+  .grid { grid-template-columns:1fr; }
+
+  header { padding:18px 12px; }
+
+  .header-inner {
+    justify-content:center;
+  }
+
+  .brand {
+    font-size:clamp(15px, 4.1vw, 23px);
+    letter-spacing:0;
+  }
+
+  .button-row { flex-direction:column; }
+
+  .button-row button { width:100%; }
+
+  .panel { padding:22px 18px; }
+
+  .agreement-preview { padding:12px; }
+}
+
 @media print {
-  body {background:white}
-  header,footer,main {display:none!important}
+  body { background:white; }
+  header, footer, main { display:none!important; }
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="header-inner">
-    <div class="brand">INLAND <span>APEX</span><br>LEADERSHIP CO.</div>
-    <div class="header-tag">SCHOOL EVENT<br>ONBOARDING</div>
+    <div class="brand">
+      INLAND <span>APEX</span> LEADERSHIP CO.
+    </div>
   </div>
 </header>
 
 <main>
+
   <!-- HOME -->
   <section id="home" class="panel">
-    <div class="eyebrow">Let's get your event on the calendar</div>
-    <h1>Let's make this a great year.</h1>
-    <p class="intro">We're excited to partner with your school! Complete your event agreement below, keep a copy for your records, and take care of your Reservation Deposit.</p>
+    <div class="eyebrow">LET'S GET YOUR EVENT ON THE CALENDAR</div>
+
+    <h1>LET'S GET YOUR EVENT ON THE CALENDAR</h1>
+
+    <p class="intro">
+      We're excited to serve your school! The following pages will walk you through completing your Event Agreement and submitting your Reservation Deposit to officially secure your event date.
+    </p>
+
     <div class="steps">
       <span class="step active">1. Agreement</span>
       <span class="step">2. Reservation Deposit</span>
       <span class="step">3. You're all set</span>
     </div>
-    <h2>First up: your event agreement</h2>
-    <p>We'll use the information you provide to fill in your Apex Event Agreement. You'll be able to review it, sign it, download a PDF copy, and submit it to our team.</p>
-    <button class="primary" onclick="showPage('formPage')">Complete Event Agreement →</button>
+
+    <h2>The Event Agreement</h2>
+
+    <p>
+      We'll use the information you provide to fill in your Apex Event Agreement. You'll be able to review it, sign it, download a PDF copy, and submit it to our team.
+    </p>
+
+    <button class="primary" onclick="showPage('formPage')">
+      Complete Event Agreement →
+    </button>
   </section>
+
 
   <!-- FORM -->
   <section id="formPage" class="panel hidden">
     <div class="eyebrow">Step 1 of 3</div>
-    <h1>School & Event Information</h1>
-    <p>Enter your contact and event details below. Please double-check your email address so we can send you a copy of the completed agreement.</p>
+
+    <h1>School &amp; Event Information</h1>
+
+    <p>
+      Enter your contact and event details below. Please double-check your email address so we can send you a copy of the completed agreement.
+    </p>
 
     <form id="schoolForm" onsubmit="return false">
+
       <label for="customerName">School / Customer Name *</label>
-      <input id="customerName" required placeholder="Example: Riverside Elementary">
+      <input
+        id="customerName"
+        required
+        placeholder="Example: Riverside Elementary"
+      >
 
       <div class="grid">
         <div>
           <label for="eventStart">Event Start Date *</label>
           <input id="eventStart" type="date" required>
         </div>
+
         <div>
           <label for="eventEnd">Event End Date *</label>
           <input id="eventEnd" type="date" required>
@@ -315,101 +479,234 @@ footer {
       </div>
 
       <label for="eventLocation">Event Location *</label>
-      <input id="eventLocation" required placeholder="School address or event location">
+      <input
+        id="eventLocation"
+        required
+        placeholder="School address or event location"
+      >
 
       <label for="customerTitle">Your Title / Position *</label>
-      <input id="customerTitle" required placeholder="Example: Principal, PTO President">
+      <input
+        id="customerTitle"
+        required
+        placeholder="Example: Principal, PTO President"
+      >
 
       <div class="grid">
         <div>
           <label for="customerPhone">Phone Number *</label>
-          <input id="customerPhone" type="tel" required placeholder="(509) 555-1234">
+          <input
+            id="customerPhone"
+            type="tel"
+            required
+            placeholder="(509) 555-1234"
+          >
         </div>
+
         <div>
           <label for="customerEmail">Email Address *</label>
-          <input id="customerEmail" type="email" required placeholder="you@school.org">
+          <input
+            id="customerEmail"
+            type="email"
+            required
+            placeholder="you@school.org"
+          >
         </div>
       </div>
 
       <label>Customer Signature *</label>
-      <p class="small-note">Use your mouse, trackpad, finger, or stylus to sign in the box below.</p>
+
+      <p class="small-note">
+        Use your mouse, trackpad, finger, or stylus to sign in the box below.
+      </p>
+
       <div class="signature-wrap">
         <canvas id="signatureCanvas"></canvas>
+
         <div class="signature-tools">
           <span class="small-note">Draw your signature above</span>
-          <button type="button" class="outline" onclick="clearSignature()">Clear / Redraw</button>
+
+          <button
+            type="button"
+            class="outline"
+            onclick="clearSignature()"
+          >
+            Clear / Redraw
+          </button>
         </div>
       </div>
 
       <div id="formError" class="error" role="alert"></div>
 
       <div class="button-row">
-        <button type="button" class="outline" onclick="showPage('home')">Back</button>
-        <button type="button" class="primary" onclick="prepareAgreement()">Review Agreement →</button>
+        <button
+          type="button"
+          class="outline"
+          onclick="showPage('home')"
+        >
+          Back
+        </button>
+
+        <button
+          type="button"
+          class="primary"
+          onclick="prepareAgreement()"
+        >
+          Review Agreement →
+        </button>
       </div>
+
     </form>
   </section>
 
+
   <!-- AGREEMENT -->
   <section id="agreementPage" class="panel hidden">
-    <div class="eyebrow">Step 1 of 3 · Review & Submit</div>
+    <div class="eyebrow">Step 1 of 3 · Review &amp; Submit</div>
+
     <h1>Your Apex Event Agreement</h1>
-    <p>Review the agreement below. Your information and drawn signature have been added to the customer fields. You can download a PDF copy for your records and submit the signed agreement to our team.</p>
+
+    <p>
+      Review the agreement below. Your information and drawn signature have been added to the customer fields. You can download a PDF copy for your records and submit the signed agreement to our team.
+    </p>
 
     <div class="agreement-preview">
       <div id="agreementDocument"></div>
     </div>
 
     <div id="submitStatus" class="small-note" style="margin-top:15px"></div>
+
     <div class="button-row">
-      <button class="outline" onclick="showPage('formPage')">Back to Edit</button>
-      <button class="secondary" onclick="downloadAgreement()">Download PDF</button>
-      <button class="primary" id="submitButton" onclick="submitAgreement()">Submit Agreement →</button>
+      <button
+        class="outline"
+        onclick="showPage('formPage')"
+      >
+        Back to Edit
+      </button>
+
+      <button
+        class="secondary"
+        onclick="downloadAgreement()"
+      >
+        Download PDF
+      </button>
+
+      <button
+        class="primary"
+        id="submitButton"
+        onclick="submitAgreement()"
+      >
+        Submit Agreement →
+      </button>
     </div>
-    <p class="small-note">Please download your copy before leaving this page. The submission process will also email a copy to Inland Apex Leadership Co.</p>
+
+    <p class="small-note">
+      Please download your copy before leaving this page. The submission process will also email a copy to Inland Apex Leadership Co.
+    </p>
   </section>
+
 
   <!-- PAYMENT -->
   <section id="paymentPage" class="panel hidden">
     <div class="eyebrow">Step 2 of 3</div>
+
     <h1>Reservation Deposit</h1>
-    <p>Thanks for completing your agreement! The next step is your $750 Reservation Deposit, which reserves your event with Inland Apex Leadership Co.</p>
+
+    <p>
+      Thanks for completing your agreement! The next step is your $750 Reservation Deposit, which reserves your event with Inland Apex Leadership Co.
+    </p>
+
     <div class="deposit-amount">$750</div>
 
     <div class="payment-option">
       <h3>Credit / Debit Card</h3>
-      <p>Pay securely through Square using a credit or debit card.</p>
-      <a class="button primary" href="https://square.link/u/h1gP4Q8f" target="_blank" rel="noopener">Pay Reservation Deposit →</a>
+
+      <p>
+        Pay securely through Square using a credit or debit card.
+      </p>
+
+      <a
+        class="button primary"
+        href="https://square.link/u/h1gP4Q8f"
+        target="_blank"
+        rel="noopener"
+      >
+        Pay Reservation Deposit →
+      </a>
     </div>
 
     <div class="payment-option">
       <h3>ACH Direct Deposit</h3>
-      <p>Prefer to pay by ACH? Contact Bradley and we'll provide the direct deposit instructions securely.</p>
-      <a class="button secondary" href="mailto:Bradley@apexleadershipco.com?subject=ACH%20Instructions%20-%20Reservation%20Deposit">Request ACH Instructions</a>
+
+      <p>
+        Prefer to pay by ACH? Contact Bradley and we'll provide the direct deposit instructions securely.
+      </p>
+
+      <a
+        class="button secondary"
+        href="mailto:Bradley@apexleadershipco.com?subject=ACH%20Instructions%20-%20Reservation%20Deposit"
+      >
+        Request ACH Instructions
+      </a>
     </div>
 
     <div class="payment-option">
       <h3>Check</h3>
+
       <p>Checks can be made payable to:</p>
+
       <strong>Inland Apex Leadership Co. LLC</strong>
     </div>
 
-    <p class="small-note">The Reservation Deposit is the $750 Booking Fee described in the Event Agreement and is applied as provided in that agreement.</p>
+    <p class="small-note">
+      The Reservation Deposit is the $750 Booking Fee described in the Event Agreement and is applied as provided in that agreement.
+    </p>
+
     <div class="button-row">
-      <button class="outline" onclick="showPage('agreementPage')">Back to Agreement</button>
-      <button class="primary" onclick="showPage('thankYouPage')">Continue →</button>
+      <button
+        class="outline"
+        onclick="showPage('agreementPage')"
+      >
+        Back to Agreement
+      </button>
+
+      <button
+        class="primary"
+        onclick="showPage('thankYouPage')"
+      >
+        Continue →
+      </button>
     </div>
   </section>
+
 
   <!-- THANK YOU -->
   <section id="thankYouPage" class="panel hidden">
     <div class="eyebrow">Step 3 of 3 · Thank You</div>
+
     <h1>We're excited to work with you!</h1>
-    <p class="intro">Thank you for taking the time to complete your Apex Event Agreement. Our team is looking forward to serving your school and making this a great event!</p>
-    <p>If you haven't already, please complete your $750 Reservation Deposit using the payment options above.</p>
-    <p>Questions? Reach out to Bradley at <a href="mailto:Bradley@apexleadershipco.com">Bradley@apexleadershipco.com</a>.</p>
-    <button class="secondary" onclick="showPage('paymentPage')">View Payment Options</button>
+
+    <p class="intro">
+      Thank you for taking the time to complete your Apex Event Agreement. Our team is looking forward to serving your school and making this a great event!
+    </p>
+
+    <p>
+      If you haven't already, please complete your $750 Reservation Deposit using the payment options above.
+    </p>
+
+    <p>
+      Questions? Reach out to Bradley at
+      <a href="mailto:Bradley@apexleadershipco.com">Bradley@apexleadershipco.com</a>.
+    </p>
+
+    <button
+      class="secondary"
+      onclick="showPage('paymentPage')"
+    >
+      View Payment Options
+    </button>
   </section>
+
 </main>
 
 <footer>
@@ -417,15 +714,26 @@ footer {
   Questions? Bradley@apexleadershipco.com
 </footer>
 
-<!-- Hidden iframe receives the Apps Script response -->
-<iframe name="submissionFrame" id="submissionFrame" title="Agreement submission" style="display:none"></iframe>
+<iframe
+  name="submissionFrame"
+  id="submissionFrame"
+  title="Agreement submission"
+  style="display:none"
+></iframe>
+
 
 <script>
+
 /*
   IMPORTANT:
   After deploying Google Apps Script, paste its Web App URL below.
 */
 const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+
+/* -------------------------------------------------------
+   AGREEMENT TEXT
+------------------------------------------------------- */
 
 const APEX_AGREEMENT_TEXT = `
 <p>This Apex Event Agreement Traditional (the “Agreement”) is entered into effective as of the <span class="field">{{EFFECTIVE_DATE}}</span> (“Effective Date”), by and between Inland Apex Leadership Co. LLC (hereinafter “Apex”) and <span class="field">{{CUSTOMER}}</span> (“Customer”). Customer’s profile: Grades ________ Population _________________.</p>
@@ -540,92 +848,289 @@ const APEX_AGREEMENT_TEXT = `
 <p style="margin-top:20px">Customer Initials: ______ (this confirms you have seen this portion)</p>
 `;
 
-let currentSignature = "";
-let signatureDrawing = false;
-let signatureHasInk = false;
-let canvas, ctx;
+
+/* -------------------------------------------------------
+   PAGE NAVIGATION
+------------------------------------------------------- */
 
 function showPage(id) {
-  document.querySelectorAll("main > section").forEach(s => s.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
+  document.querySelectorAll("main > section").forEach(section => {
+    section.classList.add("hidden");
+  });
+
+  const page = document.getElementById(id);
+  if (!page) return;
+
+  page.classList.remove("hidden");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  /*
+    IMPORTANT:
+    Resize the signature canvas only after its page is visible.
+    This fixes the original zero-width canvas issue.
+  */
+  if (id === "formPage") {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(resizeSignatureCanvas);
+    });
+  }
 }
+
+
+/* -------------------------------------------------------
+   SIGNATURE PAD
+------------------------------------------------------- */
+
+let canvas;
+let ctx;
+let signatureDrawing = false;
+let signatureHasInk = false;
+let currentSignature = "";
+let activePointerId = null;
 
 function setupSignature() {
   canvas = document.getElementById("signatureCanvas");
-  ctx = canvas.getContext("2d");
-  resizeSignatureCanvas();
 
+  if (!canvas) return;
+
+  ctx = canvas.getContext("2d", { willReadFrequently:true });
+
+  /*
+    Set up pointer events once.
+    Pointer events support mouse, touch, and stylus.
+  */
   canvas.addEventListener("pointerdown", startSignature);
   canvas.addEventListener("pointermove", drawSignature);
   canvas.addEventListener("pointerup", stopSignature);
   canvas.addEventListener("pointercancel", stopSignature);
-  canvas.addEventListener("pointerleave", stopSignature);
+  canvas.addEventListener("lostpointercapture", stopSignature);
+
+  /*
+    Initialize after the browser has rendered the page.
+  */
+  requestAnimationFrame(resizeSignatureCanvas);
 }
 
 function resizeSignatureCanvas() {
+  if (!canvas) return;
+
   const rect = canvas.getBoundingClientRect();
-  const ratio = window.devicePixelRatio || 1;
-  const previous = signatureHasInk ? canvas.toDataURL() : null;
-  canvas.width = Math.max(1, Math.floor(rect.width * ratio));
-  canvas.height = Math.max(1, Math.floor(rect.height * ratio));
-  ctx = canvas.getContext("2d");
-  ctx.scale(ratio, ratio);
-  ctx.lineWidth = 2.3;
+
+  /*
+    If the form is hidden, wait until it becomes visible.
+  */
+  if (rect.width <= 0 || rect.height <= 0) return;
+
+  const ratio = Math.max(1, window.devicePixelRatio || 1);
+
+  /*
+    Save the existing signature before resizing.
+  */
+  let previousSignature = null;
+
+  if (signatureHasInk && canvas.width > 0 && canvas.height > 0) {
+    previousSignature = document.createElement("canvas");
+    previousSignature.width = canvas.width;
+    previousSignature.height = canvas.height;
+
+    previousSignature
+      .getContext("2d")
+      .drawImage(canvas, 0, 0);
+  }
+
+  const newWidth = Math.round(rect.width * ratio);
+  const newHeight = Math.round(rect.height * ratio);
+
+  /*
+    Avoid resetting the canvas if its dimensions have not changed.
+  */
+  if (canvas.width === newWidth && canvas.height === newHeight) {
+    return;
+  }
+
+  canvas.width = newWidth;
+  canvas.height = newHeight;
+
+  ctx = canvas.getContext("2d", { willReadFrequently:true });
+
+  /*
+    Scale drawing coordinates to CSS pixels.
+  */
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+  ctx.lineWidth = 2.5;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
   ctx.strokeStyle = "#102d50";
-  if (previous) {
-    const img = new Image();
-    img.onload = () => ctx.drawImage(img,0,0,rect.width,rect.height);
-    img.src = previous;
+
+  /*
+    Restore the previous signature after resizing.
+  */
+  if (previousSignature) {
+    ctx.drawImage(
+      previousSignature,
+      0,
+      0,
+      previousSignature.width,
+      previousSignature.height,
+      0,
+      0,
+      rect.width,
+      rect.height
+    );
   }
 }
 
-function pointerPosition(e) {
-  const r = canvas.getBoundingClientRect();
-  return {x:e.clientX-r.left,y:e.clientY-r.top};
+function getPointerPosition(event) {
+  const rect = canvas.getBoundingClientRect();
+
+  return {
+    x:event.clientX - rect.left,
+    y:event.clientY - rect.top
+  };
 }
-function startSignature(e) {
-  e.preventDefault();
+
+function startSignature(event) {
+  if (!canvas || !ctx) return;
+
+  event.preventDefault();
+
+  /*
+    Prevent multiple simultaneous drawing pointers.
+  */
+  if (signatureDrawing) return;
+
   signatureDrawing = true;
-  canvas.setPointerCapture(e.pointerId);
-  const p = pointerPosition(e);
+  activePointerId = event.pointerId;
+
+  try {
+    canvas.setPointerCapture(event.pointerId);
+  } catch (error) {
+    console.warn("Pointer capture unavailable:", error);
+  }
+
+  const point = getPointerPosition(event);
+
   ctx.beginPath();
-  ctx.moveTo(p.x,p.y);
-  ctx.lineTo(p.x+.1,p.y+.1);
+  ctx.moveTo(point.x, point.y);
+
+  /*
+    Draw a small dot for taps or short signatures.
+  */
+  ctx.lineTo(point.x + 0.1, point.y + 0.1);
   ctx.stroke();
+
   signatureHasInk = true;
-}
-function drawSignature(e) {
-  if (!signatureDrawing) return;
-  e.preventDefault();
-  const p = pointerPosition(e);
-  ctx.lineTo(p.x,p.y);
-  ctx.stroke();
-}
-function stopSignature() {
-  signatureDrawing = false;
-}
-function clearSignature() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  signatureHasInk = false;
   currentSignature = "";
 }
+
+function drawSignature(event) {
+  if (!signatureDrawing || !ctx) return;
+
+  if (event.pointerId !== activePointerId) return;
+
+  event.preventDefault();
+
+  const point = getPointerPosition(event);
+
+  ctx.lineTo(point.x, point.y);
+  ctx.stroke();
+}
+
+function stopSignature(event) {
+  if (!signatureDrawing) return;
+
+  if (
+    event &&
+    activePointerId !== null &&
+    event.pointerId !== undefined &&
+    event.pointerId !== activePointerId
+  ) {
+    return;
+  }
+
+  signatureDrawing = false;
+  activePointerId = null;
+
+  if (ctx) {
+    ctx.closePath();
+  }
+}
+
+function clearSignature() {
+  if (!canvas || !ctx) return;
+
+  const rect = canvas.getBoundingClientRect();
+  const ratio = Math.max(1, window.devicePixelRatio || 1);
+
+  ctx.clearRect(
+    0,
+    0,
+    rect.width,
+    rect.height
+  );
+
+  signatureHasInk = false;
+  currentSignature = "";
+  signatureDrawing = false;
+  activePointerId = null;
+}
+
+/*
+  ResizeObserver catches layout changes, including mobile
+  orientation changes and changes in the visible form width.
+*/
+let signatureResizeObserver;
+
+function observeSignatureCanvas() {
+  if (!canvas || !window.ResizeObserver) return;
+
+  signatureResizeObserver = new ResizeObserver(() => {
+    resizeSignatureCanvas();
+  });
+
+  signatureResizeObserver.observe(canvas);
+}
+
 window.addEventListener("resize", () => {
-  if (canvas) resizeSignatureCanvas();
+  resizeSignatureCanvas();
 });
 
+window.addEventListener("orientationchange", () => {
+  setTimeout(resizeSignatureCanvas, 150);
+});
+
+
+/* -------------------------------------------------------
+   FORM DATA AND HELPERS
+------------------------------------------------------- */
+
 function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[c]));
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[character]));
 }
+
 function formatDate(value) {
   if (!value) return "";
-  const d = new Date(value + "T12:00:00");
-  return d.toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
+
+  const date = new Date(value + "T12:00:00");
+
+  return date.toLocaleDateString("en-US", {
+    month:"long",
+    day:"numeric",
+    year:"numeric"
+  });
 }
+
 function getFormData() {
   return {
     customer:document.getElementById("customerName").value.trim(),
@@ -637,158 +1142,312 @@ function getFormData() {
     email:document.getElementById("customerEmail").value.trim()
   };
 }
+
+
+/* -------------------------------------------------------
+   BUILD AGREEMENT
+------------------------------------------------------- */
+
 function prepareAgreement() {
   const form = document.getElementById("schoolForm");
   const error = document.getElementById("formError");
+
   error.textContent = "";
+
   if (!form.reportValidity()) return;
+
+  /*
+    Check that the signature canvas is actually visible
+    and has been signed.
+  */
   if (!signatureHasInk) {
     error.textContent = "Please draw your signature before continuing.";
     return;
   }
+
   const data = getFormData();
+
   if (data.end < data.start) {
     error.textContent = "The event end date cannot be before the start date.";
     return;
   }
+
   currentSignature = canvas.toDataURL("image/png");
+
   let eventDate = formatDate(data.start);
-  if (data.end !== data.start) eventDate += " – " + formatDate(data.end);
+
+  if (data.end !== data.start) {
+    eventDate += " – " + formatDate(data.end);
+  }
+
+  const today = new Date();
+  const effectiveDate = [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, "0"),
+    String(today.getDate()).padStart(2, "0")
+  ].join("-");
 
   let html = APEX_AGREEMENT_TEXT
-    .replaceAll("{{EFFECTIVE_DATE}}",escapeHtml(formatDate(new Date().toISOString().slice(0,10))))
-    .replaceAll("{{CUSTOMER}}",escapeHtml(data.customer))
-    .replaceAll("{{EVENT_DATE}}",escapeHtml(eventDate))
-    .replaceAll("{{EVENT_LOCATION}}",escapeHtml(data.location))
-    .replaceAll("{{TITLE}}",escapeHtml(data.title))
-    .replaceAll("{{PHONE}}",escapeHtml(data.phone))
-    .replaceAll("{{EMAIL}}",escapeHtml(data.email))
-    .replaceAll("{{SIGNATURE}}",currentSignature);
+    .replaceAll(
+      "{{EFFECTIVE_DATE}}",
+      escapeHtml(formatDate(effectiveDate))
+    )
+    .replaceAll(
+      "{{CUSTOMER}}",
+      escapeHtml(data.customer)
+    )
+    .replaceAll(
+      "{{EVENT_DATE}}",
+      escapeHtml(eventDate)
+    )
+    .replaceAll(
+      "{{EVENT_LOCATION}}",
+      escapeHtml(data.location)
+    )
+    .replaceAll(
+      "{{TITLE}}",
+      escapeHtml(data.title)
+    )
+    .replaceAll(
+      "{{PHONE}}",
+      escapeHtml(data.phone)
+    )
+    .replaceAll(
+      "{{EMAIL}}",
+      escapeHtml(data.email)
+    )
+    .replaceAll(
+      "{{SIGNATURE}}",
+      currentSignature
+    );
 
   document.getElementById("agreementDocument").innerHTML = html;
+
   document.getElementById("submitStatus").textContent = "";
+
   showPage("agreementPage");
 }
 
+
+/* -------------------------------------------------------
+   PDF GENERATION
+------------------------------------------------------- */
+
 async function makePdfBlob() {
+  if (typeof html2pdf === "undefined") {
+    throw new Error("PDF library could not be loaded.");
+  }
+
   const element = document.getElementById("agreementDocument");
   const data = getFormData();
-  const filename = "Apex-Event-Agreement-" + data.customer.replace(/[^a-z0-9]+/gi,"-") + ".pdf";
+
+  const filename =
+    "Apex-Event-Agreement-" +
+    data.customer.replace(/[^a-z0-9]+/gi, "-") +
+    ".pdf";
+
   const options = {
     margin:[12,12,12,12],
     filename,
-    image:{type:"jpeg",quality:0.97},
-    html2canvas:{scale:2,useCORS:true,backgroundColor:"#ffffff"},
-    jsPDF:{unit:"mm",format:"letter",orientation:"portrait"},
-    pagebreak:{mode:["css","legacy"]}
+    image:{
+      type:"jpeg",
+      quality:0.97
+    },
+    html2canvas:{
+      scale:2,
+      useCORS:true,
+      backgroundColor:"#ffffff",
+      logging:false
+    },
+    jsPDF:{
+      unit:"mm",
+      format:"letter",
+      orientation:"portrait"
+    },
+    pagebreak:{
+      mode:["css","legacy"]
+    }
   };
-  return await html2pdf().set(options).from(element).outputPdf("blob");
+
+  return await html2pdf()
+    .set(options)
+    .from(element)
+    .outputPdf("blob");
 }
+
+
+/* -------------------------------------------------------
+   DOWNLOAD AGREEMENT
+------------------------------------------------------- */
 
 async function downloadAgreement() {
   const status = document.getElementById("submitStatus");
+
   status.textContent = "Preparing your PDF...";
+
   try {
     const blob = await makePdfBlob();
     const data = getFormData();
+
     const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Apex-Event-Agreement-" + data.customer.replace(/[^a-z0-9]+/gi,"-") + ".pdf";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),30000);
-    status.textContent = "Your PDF download should begin automatically.";
-  } catch(err) {
-    console.error(err);
-    status.textContent = "We couldn't create the PDF. Please try again or print this page.";
+    const link = document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+      "Apex-Event-Agreement-" +
+      data.customer.replace(/[^a-z0-9]+/gi, "-") +
+      ".pdf";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+
+    status.textContent =
+      "Your PDF download should begin automatically.";
+
+  } catch (error) {
+    console.error(error);
+
+    status.textContent =
+      "We couldn't create the PDF. Please try again or contact Bradley.";
   }
 }
+
+
+/* -------------------------------------------------------
+   SUBMIT AGREEMENT TO GOOGLE APPS SCRIPT
+------------------------------------------------------- */
 
 function submitAgreement() {
   const status = document.getElementById("submitStatus");
   const button = document.getElementById("submitButton");
+
   if (!GOOGLE_SCRIPT_URL.startsWith("https://script.google.com/")) {
-    status.innerHTML = '<span class="error">The submission service has not been connected yet. Please contact Bradley.</span>';
+    status.innerHTML =
+      '<span class="error">The submission service has not been connected yet. Please contact Bradley.</span>';
     return;
   }
+
   if (!currentSignature) {
-    status.innerHTML = '<span class="error">Your signature is missing. Please go back and sign again.</span>';
+    status.innerHTML =
+      '<span class="error">Your signature is missing. Please go back and sign again.</span>';
     return;
   }
+
   button.disabled = true;
   button.textContent = "Preparing PDF...";
-  status.textContent = "Preparing your signed agreement for secure submission...";
 
-  makePdfBlob().then(blob => {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const base64 = String(reader.result).split(",")[1];
-      const data = getFormData();
-      const frame = document.getElementById("submissionFrame");
-      let gotResponse = false;
+  status.textContent =
+    "Preparing your signed agreement for secure submission...";
 
-      const onFrameLoad = () => {
-        if (gotResponse) return;
-        gotResponse = true;
-        status.innerHTML = '<span class="success">Your agreement has been submitted. Please check your email for a copy, and keep the PDF you downloaded for your records.</span>';
-        button.disabled = false;
-        button.textContent = "Continue to Reservation Deposit →";
-        button.onclick = () => showPage("paymentPage");
-      };
+  makePdfBlob()
+    .then(blob => {
+      const reader = new FileReader();
 
-      frame.addEventListener("load",onFrameLoad,{once:true});
+      reader.onloadend = () => {
+        const base64 = String(reader.result).split(",")[1];
+        const data = getFormData();
 
-      const form = document.createElement("form");
-      form.method = "POST";
-      form.action = GOOGLE_SCRIPT_URL;
-      form.target = "submissionFrame";
-      form.style.display = "none";
+        const form = document.createElement("form");
 
-      const fields = {
-        pdfBase64:base64,
-        filename:"Apex-Event-Agreement-" + data.customer.replace(/[^a-z0-9]+/gi,"-") + ".pdf",
-        customerName:data.customer,
-        customerEmail:data.email,
-        eventDate:formatDate(data.start) + (data.end !== data.start ? " – " + formatDate(data.end) : ""),
-        website:"Inland Apex Leadership Co. website",
-        websiteEmail:"Bradley@apexleadershipco.com",
-        websitePhone:data.phone,
-        websiteTitle:data.title,
-        websiteLocation:data.location,
-        websiteHoneypot:""
-      };
-      Object.entries(fields).forEach(([name,value]) => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = name;
-        input.value = value;
-        form.appendChild(input);
-      });
-      document.body.appendChild(form);
-      form.submit();
-      form.remove();
+        form.method = "POST";
+        form.action = GOOGLE_SCRIPT_URL;
+        form.target = "submissionFrame";
+        form.style.display = "none";
 
-      status.textContent = "Submitting... Please keep this page open while the agreement is sent.";
-      setTimeout(() => {
-        if (!gotResponse) {
-          status.innerHTML = '<span class="error">We have not received a confirmation from the submission service yet. Please keep your downloaded PDF and contact Bradley to confirm receipt.</span>';
+        const fields = {
+          pdfBase64:base64,
+
+          filename:
+            "Apex-Event-Agreement-" +
+            data.customer.replace(/[^a-z0-9]+/gi, "-") +
+            ".pdf",
+
+          customerName:data.customer,
+          customerEmail:data.email,
+
+          eventDate:
+            formatDate(data.start) +
+            (data.end !== data.start
+              ? " – " + formatDate(data.end)
+              : ""),
+
+          website:"Inland Apex Leadership Co. website",
+          websiteEmail:"Bradley@apexleadershipco.com",
+          websitePhone:data.phone,
+          websiteTitle:data.title,
+          websiteLocation:data.location,
+          websiteHoneypot:""
+        };
+
+        Object.entries(fields).forEach(([name, value]) => {
+          const input = document.createElement("input");
+
+          input.type = "hidden";
+          input.name = name;
+          input.value = value;
+
+          form.appendChild(input);
+        });
+
+        document.body.appendChild(form);
+
+        status.textContent =
+          "Submitting... Please keep this page open while the agreement is sent.";
+
+        form.submit();
+        form.remove();
+
+        /*
+          This fallback does not prove the email was delivered.
+          It simply gives the submission process time to complete.
+          Confirm receipt in the Google Drive folder and email inbox.
+        */
+        setTimeout(() => {
+          status.innerHTML =
+            '<span class="error">Please confirm receipt with Bradley before leaving this page. Keep your downloaded PDF for your records.</span>';
+
           button.disabled = false;
           button.textContent = "Try Submission Again";
-        }
-      },20000);
-    };
-    reader.readAsDataURL(blob);
-  }).catch(err => {
-    console.error(err);
-    status.textContent = "PDF creation failed. Please try again.";
-    button.disabled = false;
-    button.textContent = "Submit Agreement →";
-  });
+
+        }, 20000);
+      };
+
+      reader.onerror = () => {
+        status.innerHTML =
+          '<span class="error">We couldn't prepare the PDF for submission. Please try again.</span>';
+
+        button.disabled = false;
+        button.textContent = "Submit Agreement →";
+      };
+
+      reader.readAsDataURL(blob);
+    })
+    .catch(error => {
+      console.error(error);
+
+      status.innerHTML =
+        '<span class="error">PDF creation failed. Please try again.</span>';
+
+      button.disabled = false;
+      button.textContent = "Submit Agreement →";
+    });
 }
 
-document.addEventListener("DOMContentLoaded",setupSignature);
+
+/* -------------------------------------------------------
+   INITIALIZE
+------------------------------------------------------- */
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupSignature();
+  observeSignatureCanvas();
+});
+
 </script>
+
 </body>
 </html>
